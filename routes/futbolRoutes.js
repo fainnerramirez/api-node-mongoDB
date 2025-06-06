@@ -13,7 +13,7 @@ router.get('/listadenombres', async function (request, response) {
 });
 
 //POST
-router.post('/listadenombres', async function (request, response){
+router.post('/listadenombres', async function (request, response) {
 
     const { nuevoNombre } = request.body;
 
@@ -27,6 +27,20 @@ router.post('/listadenombres', async function (request, response){
         response.status(201).json(futbolista);
     } catch (err) {
         response.status(500).json({ message: 'Error al guardar futbolista', error: err });
+    }
+});
+
+router.post("/crearlista", async function (request, response) {
+
+    try {
+
+        const listnames = ["jhon feiber", "Fainner Ramirez", "Litzy Ramirez", "Juanse Orozco"];
+        const dataFutbol = new Futbolista({ names: listnames });
+        await dataFutbol.save();
+        response.status(201).json(dataFutbol);
+    }
+    catch (err) {
+        response.status(500).json({ message: 'Error al crear la lista', error: err })
     }
 });
 

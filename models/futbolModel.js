@@ -1,5 +1,3 @@
-// models/futbolModel.js
-
 const mongoose = require('mongoose');
 
 const futbolistasSchema = new mongoose.Schema({
